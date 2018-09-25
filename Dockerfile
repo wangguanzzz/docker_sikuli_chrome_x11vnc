@@ -4,7 +4,7 @@
 # Pull base image
 FROM ubuntu:14.04
 
-RUN apt-get update && apt-get -y install sikuli-ide && apt-get clean
+RUN apt-get update && apt-get -y install libxi6 libgconf-2-4 ruby2.3 ruby2.3-dev sikuli-ide && apt-get clean
 
 # See: https://bugs.launchpad.net/ubuntu/+source/sikuli/+bug/1313398
 ADD sikuli-ide /usr/bin/
@@ -129,7 +129,7 @@ COPY entry_point.sh /opt/bin/entry_point.sh
 RUN chmod +x /opt/bin/entry_point.sh
 
 EXPOSE 5900
-
+EXPOSE 4444
 # USER seluser
 
 ENTRYPOINT ["/opt/bin/entry_point.sh"]
